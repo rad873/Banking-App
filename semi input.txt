@@ -1,0 +1,11 @@
+bankname = []
+for cust in customeraccountlist:
+    bankname.append(cust.name)
+    print(bankname)
+
+#print(' ')
+def keypad():
+    while(True):
+        name = input("Welcome to Bank of Mohr please state your first and last name: ")
+        if name in bankname:
+            print("Welcome " + name)

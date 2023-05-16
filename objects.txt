@@ -1,0 +1,98 @@
+class account:
+    '''
+    represents an account
+    attributes: account_id, owner_id, interest, balance, min_balance, active
+    '''
+
+    def __init__(self, account_id=0, owner_id=0, interest=0, balance=0, min_balance=0, active_balance=0):
+        self.account_id = account_id
+        self.owner_id = owner_id
+        self.interest = interest
+        self.balance = balance
+        self.min_balance = min_balance
+        self.active_balance = active_balance
+
+    def __str__(self):
+        return f'Account ID: {self.account_id}, Owner ID: {self.owner_id}, Interest: {self.interest}, Balance: {self.balance}, Min Balance: {self.min_balance}, Active Balance: {self.active_balance}'
+
+
+class checking(account):
+    def __init__(self, account_id=0, owner_id=0, balance=0):
+        self.account_id = account_id
+        self.owner_id = owner_id
+        self.interest = 0
+        self.balance = balance
+        self.min_balance = 500
+        if balance > 500:
+            self.active_balance = True
+        else:
+            self.active_balance = False
+
+
+class savings(account):
+    def __init__(self, account_id=0, owner_id=0, balance=0, monthly_debits=0):
+        self.monthly_debits = monthly_debits
+        self.account_id = account_id
+        self.owner_id = owner_id
+        self.interest = .005
+        self.balance = balance
+        self.min_balance = 500
+        if balance > 500:
+            self.active_balance = True
+        else:
+            self.active_balance = False
+
+    def __str__(self):
+        return f'{account}, Monthly Debits: {self.monthly_debits}'
+
+
+class credit(account):
+    def __init__(self, credit_limit=0, account_id=0, owner_id=0, balance=0):
+        self.credit_limit = credit_limit
+        self.account_id = account_id
+        self.owner_id = owner_id
+        self.interest = .3
+        self.balance = balance
+        self.min_balance = 0
+        if balance > 0:
+            self.active_balance = True
+        else:
+            self.active_balance = False
+
+    def __str__(self):
+        return f'{account}, Credit Limit: {self.credit_limit}'
+
+
+class customer:
+    """
+     Represents a Customer.
+
+     attributes: Customer ID, Name, Income, Checking Acct, Savings, Credit.
+     """
+
+    def __init__(self, customer_id = 0, name = 0, income = 0, checking=checking(), savings=savings(), credit=credit()):
+        self.customer_id = customer_id
+        self.name = name
+        self.income = income
+        self.checking = checking
+        self.savings = savings
+        self.credit = credit
+
+    def __str__(self):
+        return f"Customer ID:{self.customer_id}, Name: {self.name}, Income: {self.income}, Checking Account: {self.checking},Savings Account: {self.savings}, Credit Account: {self.credit}"
+
+
+custo = customer()
+custo.customer_id = 1
+custo.name = 'John Smith'
+custo.income = 10000
+custo.checking = 12300
+custo.savings = 10000000
+custo.credit = 1200
+print(custo)
+
+account_one = checking()
+account_one.account_id = 1234
+account_one.owner_id = 9999
+account_one.balance = 4.20
+print(account_one)

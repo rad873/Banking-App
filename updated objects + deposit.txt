@@ -1,0 +1,129 @@
+'''NOTES: active status does not work.
+        deposit doesn't work for credit
+        yikes'''
+class Account:
+    '''
+    represents an account
+    attributes: account_id, owner_id, interest, balance, min_balance, active
+    '''
+    def __init__(self, account_id = 0, owner_id = 0, balance = 0):
+        self.account_id = account_id
+        self.owner_id = owner_id
+        self.balance = balance
+
+    def __str__(self):
+        return f'Account ID: {self.account_id}, Owner ID: {self.owner_id}, Balance: {self.balance}'
+
+    def Deposit(input_account, amount = 0):
+        input_account.balance += amount
+        return(input_account)
+
+
+class Checking(Account):
+    def __init__(self, account = Account()):
+        if not isinstance(account, Account):
+            raise TypeError('account must be an Account object.')
+        self.interest = 0
+        self.min_balance = 500
+        if account.balance > 500:
+            self.active_balance = True
+        else:
+            self.active_balance = False
+
+    def __str__(self):
+        return f'{self.account}, Interests: {self.interest}, Min Balance: {self.min_balance}, Active Status: {self.active_balance}'
+
+
+class Savings(Account):
+    def __init__(self, account = Account(), monthly_debits = 0):
+        if not isinstance(account, Account):
+            raise TypeError('account must be an Account object.')
+        self.monthly_debits = monthly_debits
+        self.interest = .005
+        self.min_balance = 500
+        if account.balance > 500:
+            self.active_balance = True
+        else:
+            self.active_balance = False
+
+    def __str__(self):
+        return f'{self.account}, Monthly Debits: {self.monthly_debits}, Interests: {self.interest}, Min Balance: {self.min_balance}, Active Status: {self.active_balance}'
+
+
+class Credit(Account):
+    def __init__(self, account = Account(), credit_limit = 0):
+        if not isinstance(account, Account):
+            raise TypeError('account must be an Account object.')
+        self.credit_limit = credit_limit
+        self.interest = .3
+        self.min_balance = 0
+        if account.balance > 0:
+            self.active_balance = True
+        else:
+            self.active_balance = False
+
+    def __str__(self):
+        return f'{self.account}, Credit Limit: {self.credit_limit}, Interests: {self.interest}, Min Balance: {self.min_balance}, Active Status: {self.active_balance}'
+
+
+class Customer:
+    """
+     Represents a Customer.
+     attributes: Customer ID, Name, Income, Checking Acct, Savings, Credit.
+     """
+    def __init__(self, customer_id = 0, name = 0, income = 0, checking = Checking(), savings = Savings(), credit = Credit()):
+        if not isinstance(checking, Checking) or not isinstance(savings, Savings) or not isinstance(credit, Credit):
+            raise TypeError('account is the incorrect account type object.')
+        self.customer_id = customer_id
+        self.name = name
+        self.income = income
+        self.checking = checking
+        self.savings = savings
+        self.credit = credit
+
+    def __str__(self):
+        return f"Customer ID:{self.customer_id}, Name: {self.name}, Income: {self.income}, Checking Account: {self.checking},Savings Account: {self.savings}, Credit Account: {self.credit}"
+
+
+custo = Customer()
+custo.customer_id = 1
+custo.name = 'John Smith'
+custo.income = 10
+custo.checking = 1234
+custo.savings = 5000
+custo.credit = 9876
+print(custo)
+
+print(' ')
+
+account_1 = Account()
+account_1.account_id = 1
+account_1.owner_id = custo
+account_1.balance = 14
+checking_1234 = Checking()
+checking_1234.account = account_1
+print(checking_1234)
+
+print(' ')
+account_2 = Account()
+account_2.account_id = 2
+account_2.owner_id = custo
+account_2.balance = 111
+savings_5000 = Savings()
+savings_5000.account = account_2
+savings_5000.monthly_debits = 4
+print(savings_5000)
+
+print(' ')
+account_3 = Account()
+account_3.account_id = 3
+account_3.owner_id = custo
+account_3.balance = 33
+credit_9876 = Credit()
+credit_9876.account = account_3
+print(credit_9876)
+
+print(' ')
+
+deposit = Credit.Deposit(account_3, 600)
+print(deposit)

@@ -1,0 +1,75 @@
+def keypad():
+    while(True):
+        name = input("Welcome to Bank of Mohr please state your first and last name: ")
+        if (name == "fart"):
+            print("Welcome " + name)
+        else:
+            print('For safety reasons we are logging you out try again with the right name')
+            return False
+
+        print("Enter 1 for your account information, 2 to advance month, 3 to import your CVS, 4 to export your CVS: ")
+        key = input ("please enter a number 1-4: ")
+#account information
+        if (key == "1"):
+            print ("Welcome to your account information " + name)
+            print ("Enter 1 shows all of your accounts, 2 to show your debit for each account, 3 to transfer money, \n4 to change your name and 5 to update your income ")
+            account_key = input ("please enter a number between 1-5: ")
+
+    #account information - show accounts
+            if (account_key == "1"):
+                print (custo) #change later once we got key
+    #account information - show debit
+            elif (account_key == "2"):
+                print(account_1234) #change later once we got key
+    #account information - transfer money
+            elif (account_key == "3"):
+                print ("Hello you chose the option to transfer your funds: \n Enter 1 for transfering funds into your checking, 2 to transfer out of your checkings, \n 3 for transfering funds into your savings, 4 for transfering your funds out of savings, \n and 5 to transfer funds into your credit: ") #change later once we can transfer money
+                transfer_funds = input(" ")
+                if (transfer_funds == "1"):
+                    print("You chose to transfer funds into your checking "+ name)
+                elif (transfer_funds == "2"):
+                    print("You chose to transfer funds out of your checking " +name)
+                elif (transfer_funds == "3"):
+                    print("You chose to transfer funds into your savings " + name)
+                elif (transfer_funds == "4"):
+                    print("You chose to transfer funds out of your checking " + name)
+                elif (transfer_funds == "5"):
+                    print("You chose to transfer funds into your credit " + name)
+                else:
+                    print('For safety reasons we are logging you out try again with the right number')
+                    return False
+                '''
+                if transfer_funds < 0:
+                    print("For safety reasons we are logging you out try again with the right number") #prevents neg numbers
+                    return False
+                '''
+                #add if transfer_funds > total_amount
+    #account information - change name
+            elif (account_key == "4"):
+                print ("you have chose the option to change your name please input your new name: ") #change when we get list
+                new_name = input(" ")
+                name = new_name
+                print ("your new name is: " +name)
+    #account information - update income
+            elif (account_key == "5"):
+                print ("you have chose the option to update your income")
+            else:
+                print('For safety reasons we are logging you out try again with the right number')
+                return False
+
+#advance month
+        elif (key == "2"):
+            print ("Welcome to your advance month function" + name)
+#import CSV
+        elif (key == "3"):
+            print ("Welcome please import your CSV " + name)
+#export CSV
+        elif (key == "4"):
+            print("Welcome please export your CSV" + name)
+#unexpected result
+        else:
+            print('For safety reasons we are logging you out try again with the right number')
+            return False
+
+
+keypad()

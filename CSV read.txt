@@ -1,0 +1,47 @@
+with open("accounts-1.csv", "r") as csvfile:
+    csvreader = csv.reader(csvfile)
+    accountslist = []
+    newlist = []
+
+    # This skips the first row of the CSV file.
+    next(csvreader)
+
+    for row in csvreader:
+        for k in row:
+            fullname = row[2] + " " + row[1]  #customer full name in First + Last format
+            customerid = row[0]  #customer id as a string
+            if row[3] == 'TRUE':
+                active = True #customer active status
+            else:
+                active = False
+            income = int(row[4]) #customer monthly income as an integer
+            checkingid = row[5] #checking id as a string
+            checkingbal = int(row[6]) #checking balance as an integer
+            savingsid = row[7] #savings id as a string
+            savingsbal = int(row[8]) #savings balance as an integer
+            savingsdebnum = int(row[9]) #savings debit limit as an integer
+            creditid = row[10] #credit id as a string
+            creditbal = int(row[11]) #credit balance as an integer
+            creditlim = int(row[12]) #credit limit as an integer
+        #append everything in to a new list in the following order:
+        newlist = (customerid,fullname,active,income,checkingid,checkingbal,savingsid, savingsbal, savingsdebnum, creditid, creditbal, creditlim)
+        accountslist.append(newlist) # append new list to a list of lists
+        newlist = [] #reset newlist
+        #print (fullname)
+        #print(newlist)
+    #print(accountslist)
+    customeraccountlist = [] #this list contains all accounts under Customer() class format
+    for k in accountslist:
+        customer = Customer()
+        customer.customer_id = k[0]
+        customer.name = k[1]
+        customer.active = k[2]
+        customer.income = k[3]
+        customer.check = Checking(Account(k[4],k[0],k[5]))
+        customer.save = Savings(Account(k[6],k[0],k[7]),k[8])
+        customer.cred = Credit(Account(k[9],k[0],k[10]),k[11])
+        customeraccountlist.append(customer)
+    #print(customeraccountlist)
+    for k in customeraccountlist:
+        print(k)
+        print('')
