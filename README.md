@@ -4,3 +4,5 @@ Max Rademacher @rad873
 Kevin Dang @kevindnwu
 Karlee Revers @krevers
 Drew VunCannon @dvuncann
+
+The password is MohrMoney (to commemorate our professor Dr. Austin Mohr).
