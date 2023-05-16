@@ -1,0 +1,5 @@
+customer_id,last_name,first_name,active,monthly_income,checking_id,checking_balance,savings_id,savings_balance,savings_debits_remain,credit_id,credit_balance,credit_limit
+1234,Mohr,Austin,TRUE,50,2345,0,2346,400,6,2347,4000,5000
+7777,Musk,Elon,TRUE,1000000,7890,10000000,7891,50000000,6,7892,50000,100000
+2345,Checking,Lo,TRUE,3000,3330,50,3331,10000,6,3332,2000,10000
+3456,Nobody,John,TRUE,5000,4001,5000,4002,20000,6,4003,0,10000
